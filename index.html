@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamBall</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="teams.json"></script>
+    <script src="./play.js" defer></script>
+    <script type="module" src="./app.js" defer></script>
+</head>
+
+<body>
+    <div id="game" class="game">
+        <div class="logo-container">
+            <p id="user-score">0</p>
+            <img id="user-img" src="" alt="Your Team" height="200">
+            <h4 id="user-club-name"></h4>
+        </div>
+
+        <div class="arena">
+            <canvas id="cvs" width="750" height="500"></canvas>
+            <p class="speed">Speed: <span id="speed"></span></p>
+        </div>
+
+        <div class="logo-container">
+            <p id="computer-score">0</p>
+            <img id="computer-img" src="" alt="Your Team" height="200">
+            <h4 id="computer-club-name"></h4>
+        </div>
+
+    </div>
+
+
+    <h2 id="chooseHeader">Choose your team:</h2>
+    <div class="container" id="teams-container">
+
+
+
+    </div>
+
+
+</body>
+
+</html>
