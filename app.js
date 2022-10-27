@@ -44,22 +44,39 @@ teams.forEach(team => {
         if (order === 0) {
             userTeam = team;
             document.getElementById('user-img').src = `./teams/${team.img}`;
+            document.getElementById('user-selected').src = `./teams/${team.img}`;
             document.getElementById('user-club-name').textContent = team.name;
             // document.getElementById('user-team-name').textContent = team.name;
             document.getElementById('chooseHeader').textContent = "Choose your opponent:";
             order++;
 
         } else {
-            computerTeam = team;
-            document.getElementById('computer-img').src = `./teams/${team.img}`;
-            document.getElementById('computer-club-name').textContent = team.name;
-            // document.getElementById('computer-team-name').textContent = team.name;
 
             document.getElementById('chooseHeader').style.display = "none";
-            document.getElementById('teams-container').style.display = "none";
-            document.getElementById('game').style.display = "flex";
 
-            setInterval(game, 1000 / fps);
+            computerTeam = team;
+            document.getElementById('computer-img').src = `./teams/${team.img}`;
+            document.getElementById('computer-selected').src = `./teams/${team.img}`;
+
+            document.getElementById('computer-selected').style.height = "400px";
+            document.getElementById('user-selected').style.height = "400px";
+
+            document.getElementById('computer-club-name').textContent = team.name;
+            document.getElementById('teams-container').style.display = "none";
+            document.getElementById('pong-loader').style.display = "block";
+            document.getElementById('loading-text').style.display = "block";
+
+
+            setTimeout(() => {
+
+                document.querySelector('.top').style.display = "none";
+                document.getElementById('game').style.display = "flex";
+
+                setInterval(game, 1000 / fps);
+            }, 3000);
+
+
+
 
         }
     })
