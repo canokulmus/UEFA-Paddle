@@ -19,20 +19,21 @@
             <img id="user-img" src="" alt="Your Team" height="200">
             <h4 id="user-club-name"></h4>
         </div>
-
         <div class="arena">
+            <p id="timer"></p>
+            <button id="playAgain" onclick="function reload(){window.location.reload();};reload()">Play Again</button>
             <canvas id="cvs" width="750" height="500"></canvas>
             <p class="speed">Current Speed: <span id="speed"></span></p>
-        </div>
 
+            <button class="backToTeams" onclick="function reload(){window.location.reload();};reload()">Back To
+                Teams</button>
+        </div>
         <div class="logo-container">
             <p id="computer-score">0</p>
             <img id="computer-img" src="" alt="Your Team" height="200">
             <h4 id="computer-club-name"></h4>
         </div>
-
     </div>
-
 
     <div class="top">
         <img id="user-selected" class="" src="" alt="" height="100">
@@ -44,12 +45,7 @@
         <img id="computer-selected" src="" alt="" height="100">
     </div>
 
-
-    <div class="container" id="teams-container">
-
-
-    </div>
-
+    <div class="container" id="teams-container"></div>
 
 </body>
 

@@ -74,6 +74,44 @@
 
 }
 
+#playAgain {
+    display: none;
+    font-size: 2.6rem;
+    background-color: #e91e63;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    font-weight: 600;
+}
+
+#playAgain:hover {
+    background-color: #fff;
+    color: #e91e63;
+}
+
+.backToTeams {
+    display: block;
+    font-size: 1rem;
+    background-color: #e91e63;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: none;
+}
+
+.backToTeams:hover {
+    background-color: #fff;
+    color: #e91e63;
+
+}
+
 body {
     margin: 0;
     display: flex;
@@ -152,6 +190,12 @@ body {
     width: 100%;
 }
 
+#timer {
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 500;
+    margin: 10px;
+}
 
 
 body .container {
@@ -180,8 +224,12 @@ body .container .card img {
 }
 
 
-.chooseButton {
+.chooseButton1 {
     background: #e91e63;
+}
+
+.chooseButton2 {
+    background: #00b8ae;
 }
 
 body .container .card .box {
@@ -202,8 +250,17 @@ body .container .card .box {
 body .container .card .box:hover {
     transform: translateY(-50px);
     cursor: pointer;
+}
+
+body .container .card .box.home:hover {
     background: #920534;
 }
+
+body .container .card .box.away:hover {
+    background: #008982;
+}
+
+
 
 body .container .card .box:before {
     content: "";

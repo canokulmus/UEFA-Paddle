@@ -14,6 +14,7 @@ teams.forEach(team => {
 
     let box = document.createElement('div');
     box.classList.add('box');
+    box.classList.add('home');
 
     let content = document.createElement('div');
     content.classList.add('content');
@@ -25,7 +26,7 @@ teams.forEach(team => {
     name.textContent = team.name;
 
     let link = document.createElement('a');
-    link.classList.add('chooseButton');
+    link.classList.add('chooseButton1');
     link.href = "#";
     link.textContent = "Choose Team";
 
@@ -46,9 +47,21 @@ teams.forEach(team => {
             document.getElementById('user-img').src = `./teams/${team.img}`;
             document.getElementById('user-selected').src = `./teams/${team.img}`;
             document.getElementById('user-club-name').textContent = team.name;
-            // document.getElementById('user-team-name').textContent = team.name;
             document.getElementById('chooseHeader').textContent = "Choose your opponent:";
             order++;
+
+
+            //changing the color of the card and 
+            document.querySelectorAll('.chooseButton1').forEach(button => {
+                button.classList.remove('chooseButton1');
+                button.classList.add('chooseButton2');
+            });
+
+            document.querySelectorAll('.box.home').forEach(button => {
+                button.classList.remove('home');
+                button.classList.add('away');
+            });
+
 
         } else {
 
@@ -66,21 +79,16 @@ teams.forEach(team => {
             document.getElementById('pong-loader').style.display = "block";
             document.getElementById('loading-text').style.display = "block";
 
-
             setTimeout(() => {
 
                 document.querySelector('.top').style.display = "none";
                 document.getElementById('game').style.display = "flex";
 
-                setInterval(game, 1000 / fps);
+                gameInterval();
+
             }, 3000);
-
-
-
 
         }
     })
-
-
 
 });

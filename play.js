@@ -1,15 +1,27 @@
-
 const cvs = document.getElementById("cvs");
 const ctx = cvs.getContext("2d");
 const speedDisplay = document.getElementById("speed");
-const fps = 50;
+const fps = 65;
+let time = 180;
+const timer = document.getElementById("timer");
+
+let isGameStarted = false;
+
+const convertSecondsToMinutes = (seconds) => {
+    let minutes = Math.floor(seconds / 60);
+    let remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;
+    }
+    return `${minutes}:${remainingSeconds}`;
+}
+timer.textContent = convertSecondsToMinutes(time);
 
 const getTeams = async () => {
     let response = await fetch("teams.json");
     let teams = await response.json();
     return teams;
 }
-
 
 const drawRect = (x, y, w, h, color) => {
     ctx.fillStyle = color;
@@ -76,9 +88,23 @@ const ball = {
 }
 
 const movePaddle = (e) => {
+
     let rect = cvs.getBoundingClientRect();
     user.y = e.clientY - rect.top - user.height / 2;
     ball.stop = false;
+
+    //start timer when game starts
+    if (!isGameStarted) {
+        isGameStarted = true;
+        setInterval(() => {
+            if (time > 0) {
+                time--;
+                timer.textContent = convertSecondsToMinutes(time);
+            } else {
+
+            }
+        }, 1000);
+    }
 }
 
 cvs.addEventListener("mousemove", movePaddle);
@@ -134,7 +160,6 @@ const update = () => {
         ball.speed += 0.5;
     }
 
-
     if (ball.x > cvs.width) {
         user.score++;
         document.getElementById("user-score").textContent = user.score;
@@ -144,9 +169,7 @@ const update = () => {
         document.getElementById("computer-score").textContent = com.score;
         resetBall();
     }
-
     speedDisplay.textContent = ball.speed.toFixed(1);
-
 }
 
 const render = () => {
@@ -164,9 +187,32 @@ const render = () => {
     drawRectS(0, 0, cvs.width, cvs.height, "whitesmoke", 5);
 }
 
-const game = () => {
-    update();
-    render();
+const gameInterval = () => {
+    setInterval(() => {
+
+        if (time > 0) {
+            update();
+            render();
+        } else {
+            clearInterval(gameInterval);
+
+            if (user.score > com.score) {
+                timer.textContent = "You Win!";
+            } else if (user.score < com.score) {
+                timer.textContent = "You Lose!";
+            } else {
+                timer.textContent = "Draw!";
+            }
+
+            cvs.style.display = "none";
+            document.querySelector(".speed").style.display = "none";
+            document.querySelector(".backToTeams").style.display = "none";
+            document.querySelector("#playAgain").style.display = "block";
+
+        }
+
+    }, 1000 / fps);
 }
+
 
 
