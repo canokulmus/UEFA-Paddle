@@ -80,7 +80,7 @@ const ball = {
     x: cvs.width / 2,
     y: cvs.height / 2,
     radius: 13,
-    color: "#a51890",
+    color: "#e91e63",
     speed: 5,
     velocityX: 3,
     velocityY: 4,
@@ -173,7 +173,7 @@ const update = () => {
 }
 
 const render = () => {
-    drawRect(0, 0, cvs.width, cvs.height, "#7eaf34");
+    drawRect(0, 0, cvs.width, cvs.height, "#232427");
     drawRect(cvs.width / 2 - 2, 0, 4, cvs.height, "#FFF");
     drawCircleF(cvs.width / 2, cvs.height / 2, 8, "#FFF");
     drawCircleS(cvs.width / 2, cvs.height / 2, 50, 4, "#FFF");
@@ -188,6 +188,7 @@ const render = () => {
 }
 
 const gameInterval = () => {
+
     setInterval(() => {
 
         if (time > 0) {
